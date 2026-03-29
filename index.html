@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Concierge | Done-for-You Social Media & Blog Content</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-950: #1a365d;
+            --navy-900: #102a43;
+            --gold-500: #d4af37;
+            --gold-600: #b5932e;
+            --white: #ffffff;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-700: #2d3748;
+            --gray-900: #171923;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-900) 100%);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-500);
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold-500);
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-900) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--gold-500);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gold-500);
+            color: var(--navy-900);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--gold-600);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtext {
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        /* Problem/Solution */
+        .problem {
+            padding: 5rem 2rem;
+            background: var(--gray-50);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .problem h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--navy-900);
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .problem-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .problem-card h3 {
+            color: var(--navy-950);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .problem-card ul {
+            list-style: none;
+        }
+        
+        .problem-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .problem-card li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #f56565;
+        }
+        
+        /* Solution */
+        .solution {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        
+        .solution h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--navy-900);
+        }
+        
+        .solution-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            margin-bottom: 3rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            color: var(--navy-950);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--gray-50);
+        }
+        
+        .pricing h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--navy-900);
+        }
+        
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .pricing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy-950);
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--navy-950);
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray-700);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold-500);
+            font-weight: bold;
+        }
+        
+        .pricing-cta {
+            display: block;
+            background: var(--gold-500);
+            color: var(--navy-900);
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-cta:hover {
+            background: var(--gold-600);
+        }
+        
+        /* Guarantee */
+        .guarantee {
+            padding: 3rem 2rem;
+            background: var(--navy-950);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .guarantee h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy-900);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Content Concierge</div>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Done-for-You Content That <span>Actually Converts</span></h1>
+            <p>30 social posts. 4 blog articles. 5-email sequence. <br>Delivered in 48 hours. No endless revisions.</p>
+            <a href="#pricing" class="cta-button">Get Started — $997/mo</a>
+            <p class="hero-subtext">⚡ 5-question intake form • 95% first-draft approval • Cancel anytime</p>
+        </div>
+    </section>
+
+    <section class="problem" id="how-it-works">
+        <div class="container">
+            <h2>Sound Familiar?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>😰 The Content Struggle</h3>
+                    <ul>
+                        <li>You know you should post but never have time</li>
+                        <li>Your content is inconsistent and random</li>
+                        <li>You hate writing captions</li>
+                        <li>You don't know what to post</li>
+                        <li>Your feed looks unprofessional</li>
+                    </ul>
+                </div>
+                <div class="problem-card">
+                    <h3>💸 Agency Nightmares</h3>
+                    <ul>
+                        <li>$3,000+/month retainers</li>
+                        <li>Endless revision loops</li>
+                        <li>Missed deadlines</li>
+                        <li>Generic, copy-paste content</li>
+                        <li>6-month contracts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2>Here's How We Fix It</h2>
+            <p class="solution-subtitle">Professional content without the agency headache</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <h3>30 Social Posts</h3>
+                    <p>Written and designed for your brand. Instagram, LinkedIn, Twitter/X ready.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📄</div>
+                    <h3>4 Blog Articles</h3>
+                    <p>1,000-word SEO-optimized articles that establish authority.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📧</div>
+                    <h3>5-Email Sequence</h3>
+                    <p>Nurture leads from first contact to sale on autopilot.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>48-Hour Delivery</h3>
+                    <p>Fill out a 5-question form. Get everything in 2 days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            
+            <div class="pricing-card">
+                <h3>Professional</h3>
+                <div class="price">$997<span>/month</span></div>
+                <p>Everything you need to dominate content</p>
+                
+                <ul class="pricing-features">
+                    <li>30 social media posts (written + designed)</li>
+                    <li>4 blog articles (1,000 words each)</li>
+                    <li>5-email nurture sequence</li>
+                    <li>3 variations per post (you pick)</li>
+                    <li>48-hour delivery</li>
+                    <li>1 revision round included</li>
+                    <li>Monthly strategy call (30 min)</li>
+                    <li>Cancel anytime</li>
+                </ul>
+                
+                <a href="mailto:plutus.control@gmail.com?subject=Content Concierge - Sign Me Up" class="pricing-cta">Get Started</a>
+                <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--gray-700);">Questions? Email: plutus.control@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee">
+        <div class="container">
+            <h3>🎯 95% First-Draft Approval Rate</h3>
+            <p>We're so confident you'll love your content, we don't lock you into contracts.<br>If you're not happy, cancel anytime. No hard feelings.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p><strong>Content Concierge</strong> by Crestmont Private Wealth</p>
+            <p style="margin-top: 0.5rem;">plutus.control@gmail.com</p>
+            <p style="margin-top: 1rem; font-size: 0.75rem;">© 2026 Crestmont Private Wealth. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
